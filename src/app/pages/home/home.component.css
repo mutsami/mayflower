@@ -1,0 +1,21 @@
+/* Base CSS for all methods */
+/* Set box dimensions and positioning */
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    position: relative;
+  }
+  /* Fit our square image to its parent */
+  img {
+    width: 100%;
+  } 
+  /* Our shade div - translucent, sized and positioned to sit exactly on top of our image */
+.shade {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }

@@ -1,0 +1,68 @@
+<div class="header">
+    <app-side-nav></app-side-nav>
+    <div class="contentblock">
+        <div class="row" style="margin-top: 4%;">
+            <div class="col-sm-6">
+                <h1 class="title" style="float: left;">  Blog editor.</h1>
+            </div> 
+            <div  class="col-sm-6">
+
+            </div>
+        </div>
+        <div class="container" style="margin-top: 4%;">
+            <form  [formGroup]="form" (ngSubmit)="submit()" >
+                <div class="form-outline mb-4">
+                  <label for="photoURL"><small style="color: var(--medium);">Choose member photo from your uploads photo</small></label>
+                  <select formControlName="photoURL"  class="form-control" id="photoURL">
+                    <option *ngFor="let item of fileUploads" [value]="item.url" >{{item.name}}</option> 
+                  </select>
+                  <div *ngIf="f['photoURL'].touched && f['photoURL'].invalid" style="color: var(--medium);">
+                    <div *ngIf="f['photoURL'].errors && f['photoURL'].errors['required']" > <small>** User photo is required.</small> </div>
+                </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label for="tier"><small style="color: var(--medium);">Tier</small></label>
+                    <select class="form-control" id="tier" formControlName="tier" >
+                      <option value=1>Director</option>
+                      <option value=2>Management</option> 
+                    </select>
+                    <div *ngIf="f['tier'].touched && f['tier'].invalid" style="color: var(--medium);">
+                        <div *ngIf="f['tier'].errors && f['tier'].errors['required']" > <small>** Tier is required.</small> </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-6">
+                        <!-- Name input -->
+                        <div class="mb-4">
+                          <label class="form-label" for="name">Name</label>
+
+                          <input type="text" id="name" formControlName="name"  class="form-control form-control-sm" />
+                            <div *ngIf="f['name'].touched && f['name'].invalid" style="color: var(--medium);">
+                                <div *ngIf="f['name'].errors && f['name'].errors['required']" > <small>** Name is required.</small> </div>
+                                <div *ngIf="f['name'].errors && f['name'].errors['minlength']"><small>** Name be above 3 characters.</small></div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <!-- Job title input -->
+                        <div class="mb-4">
+                          <label class="form-label" for="title">Job title</label>
+
+                            <input type="text" id="title" formControlName="title"  class="form-control form-control-sm" />
+                            <div *ngIf="f['title'].touched && f['title'].invalid" style="color: var(--medium);">
+                                <div *ngIf="f['title'].errors && f['title'].errors['required']" > <small>** Job title is required.</small> </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                                         
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-custom1 shadow-0"  [disabled]="form.invalid" type="submit">Edit member details</button>
+                &nbsp;
+                <button (click)="auth.deleteMember(member_id)" class="btn btn-danger shadow-0" >Delete member</button>
+
+              </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,83 @@
+<div *ngIf="auth.user$ | async as user" >    
+    <div *ngIf="!user.verified">
+        <app-navbar></app-navbar>
+        <div class="container" style="margin-top: 8%;margin-bottom: 8%;">
+            <div class="row" >
+                <div class="col-sm-5">
+                    <h1 class="title" style="font-size: 45px;">Admin only access</h1>
+                    <p class="subtitle" style="color: var(--dark);"><small>Account verification required</small></p> 
+                    <p><small style="letter-spacing: 1px;">It seems your gmail account is yet to be verified, to change this, kindly contact the administor, thank you.</small></p>
+                    <a  (click)="auth.signOut()" style="cursor: pointer;color: var(--medium);" ><p><i class="fas fa-sign-out"></i> Sign out</p></a>
+
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <img src="./../../../assets/taxi-89.png" class="accessImg" alt="">
+                </div>
+                <div class="col-sm-1">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bannerAccess">
+        </div> 
+    </div>  
+</div>
+
+<div  *ngIf="auth.user$ | async as user">
+    <div *ngIf="user.verified" class="header">
+        <app-side-nav></app-side-nav>
+        <div class="contentblock"> 
+            <div class="row" style="margin-top: 2%;margin-bottom: 2%;"> 
+                <div class="col-sm-11" >
+                    <div class="row" style="margin-top: 2%;margin-bottom: 2%;"> 
+                        <h1 class="title">Partnership requests</h1>
+                    </div>
+    
+                    <div class="row" style="max-height: 80vh;  overflow-y: auto;"> 
+                        <div  *ngFor="let member of partnerships" class="col-sm-12" style=" border-radius: 4px; color: var(--dark);margin-top: 1%; padding: 2%; border: 1px solid rgb(228, 226, 226); ">
+                             <div class="row" style="background-color: var();">
+                                 <div class="col-sm-3">
+                                    <h2 class="subtitle" style="font-weight: bold;margin-bottom: 0;margin-bottom: 0;">{{member.name}}</h2>
+                                    <p class="subtitle" style="margin-bottom: 0%;"><span style="font-size: 12px;color: var(--medium);margin-bottom: 0;"> {{member.email}}</span></p>
+                                 </div>
+                                 <div class="col-sm-2">
+                                     <p style="margin-bottom: 0%;">{{member.uploaded.toDate()  | date  }}</p>
+                                     <p style="margin-bottom: 0%;"><small style="font-size: 11px;color: lightgray;">{{member.uploaded.toDate()  | timeago  }}</small></p>
+                                </div>
+    
+                                 <div class="col-sm-6"> 
+                                    <span *ngFor="let item of member.industry" class="badge bg-custom"> {{item | titlecase}} </span>
+                                 </div>
+                                 <div class="col-sm-1" style="text-align:left">
+                                    <a (click)="auth.deletePartnership(member.id)" style="color: red; text-decoration: underline;cursor: pointer;" ><small>Delete</small></a>
+                                 </div>
+                             </div>  
+                             <div *ngIf="member.documents.length > 0" class="row" style="margin-top: 2%;">
+                                 <hr>
+                                <p class="text-muted" style="text-decoration: underline;">Attached documents</p>
+                                 <ul
+                                 class="list-group list-group-flush"
+                                 *ngFor="let file of member.documents"
+                                 style="max-height: 50vh; overflow-y: auto; "
+                               >
+                                 <li class="list-group-item" style="width: fit-content;">
+                                   <a href="{{file.url}}"><span style="font-size: 12px;"> {{ file.name }}  </span></a>
+                                   &nbsp; 
+                                   <a  
+                                    style="cursor: pointer; float: right; text-decoration: underline; color: red;">
+                                     <small style="font-size: 10px;">Delete</small>
+                                   </a>
+                                 </li>
+                               </ul>
+    
+                             </div>  
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    
+                </div>
+            </div> 
+        </div> 
+    </div>
+</div> 

@@ -1,0 +1,156 @@
+<div *ngIf="auth.user$ | async ; then authenticated else guest">
+    <!-- template will replace this div -->
+</div>
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+    <div class="row">
+        <div class="col-sm-1">
+    
+        </div>
+        <div class="col-sm-5">
+            <div class="vertcent">
+                <h1 class="title">Welcome back</h1>
+                <p style="margin-top: 1%;"><small style="letter-spacing: 2px;">Welcome back!Use your approved gmail account to login as an administrator. Contact admin at <a href="tel:254723329420">+254-(723)-329-420</a> incase of any query.</small></p>
+                
+                <a  (click)="auth.googleSignin()"  class="btn btn-signin btn-block shadow-0"> <span class="subtitle" > <img src="./../../../assets/Google__G__Logo.svg"  alt=""> &nbsp; Log in with Google</span>   </a>
+                <a  [routerLink]= "['/']" class="btn btn-back btn-block shadow-0" style="margin-top: 2%;"> <span class="subtitle" style="font-size: 12px;" > <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="22" height="22"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M166.61962,139.73683c-0.04829,-37.07806 -30.09868,-67.12124 -67.17675,-67.16062h-52.91687l24.99724,-24.97225c-0.87129,-1.12875 -3.48811,-3.74772 -7.47474,-7.73436l-7.60562,-7.60563l-51.0625,51.0625l51.0625,51.0625l7.60562,-7.60563c3.98664,-3.98664 6.6048,-6.60587 7.47609,-7.73436l-24.99859,-24.97225h52.91688c47.28576,-0.00108 66.63361,44.38326 67.17675,45.66009z" fill="#ea8566"></path><path d="M164.14094,140.77609c-0.18248,-0.44075 -18.75606,-44.02609 -64.70344,-44.02609h-46.42361l20.5325,20.51315c0.25022,0.24907 0.44869,0.54519 0.58399,0.87129c0.68773,1.65872 0.68773,1.65872 -8.1872,10.535l-7.60562,7.60562c-0.50377,0.50422 -1.1873,0.78753 -1.90006,0.78753c-0.71276,0 -1.39629,-0.28331 -1.90006,-0.78753l-51.0625,-51.0625c-0.50422,-0.50377 -0.78753,-1.1873 -0.78753,-1.90006c0,-0.71276 0.28331,-1.39629 0.78753,-1.90006l51.0625,-51.0625c0.50377,-0.50422 1.1873,-0.78753 1.90006,-0.78753c0.71276,0 1.39629,0.28331 1.90006,0.78753l7.60562,7.60563c8.87493,8.87628 8.87493,8.87628 8.1872,10.535c-0.1353,0.3261 -0.33377,0.62221 -0.58399,0.87129l-20.5325,20.51315h46.42361c38.57297,0.04325 69.83175,31.30203 69.875,69.875c-0.00108,1.28158 -0.90694,2.3841 -2.16397,2.63375c-0.17239,0.03457 -0.3477,0.05257 -0.52353,0.05375c-1.08756,-0.00132 -2.06755,-0.65677 -2.48406,-1.66141zM44.62191,95.96256c-0.76821,-0.76844 -0.99811,-1.92385 -0.58258,-2.92783c0.41553,-1.00398 1.39473,-1.65896 2.4813,-1.65974h52.91688c33.96785,0 53.99402,21.98375 63.30729,35.9953c-5.96002,-30.25521 -32.47066,-52.08117 -63.30729,-52.1203h-52.91687c-1.08662,-0.00067 -2.06592,-0.65561 -2.48152,-1.65961c-0.4156,-1.004 -0.18571,-2.15948 0.58253,-2.92795l23.2243,-23.20334c-2.91943,-2.91862 -8.48605,-8.48497 -11.40844,-11.40871l-47.26211,47.26211l47.26211,47.26211c2.92239,-2.92373 8.48901,-8.49008 11.40871,-11.40871z" fill="#5a1e0c"></path></g></g></svg>
+                     back to home</span>   </a>
+    
+            </div>
+        </div>
+        <div class="col-sm-5 signinbanner" >
+    
+        </div>
+        <div class="col-sm-1">
+    
+        </div>
+    </div>
+
+</ng-template>
+
+
+<!-- User logged in -->
+<ng-template #authenticated>
+    <div *ngIf="auth.user$ | async as user" >    
+        <div *ngIf="!user.verified">
+            <app-navbar></app-navbar>
+            <div class="container" style="margin-top: 8%;margin-bottom: 8%;">
+                <div class="row" >
+                    <div class="col-sm-5">
+                        <h1 class="title" style="font-size: 45px;">Admin only access</h1>
+                        <p class="subtitle" style="color: var(--dark);"><small>Account verification required</small></p> 
+                        <p><small style="letter-spacing: 1px;">It seems your gmail account is yet to be verified, to change this, kindly contact the administor, thank you.</small></p>
+                        <a  (click)="auth.signOut()" style="cursor: pointer;color: var(--medium);" ><p><i class="fas fa-sign-out"></i> Sign out</p></a>
+
+                    </div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <img src="./../../../assets/taxi-89.png" class="accessImg" alt="">
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid bannerAccess">
+            </div> 
+            
+        </div> 
+         
+    </div> 
+ 
+        <div class="header">
+
+            <div *ngIf="auth.user$ | async as user" >
+                <app-side-nav *ngIf="user.verified" ></app-side-nav>
+            </div>
+            <div class="contentblock" *ngIf="auth.user$ | async as user">
+                <div *ngIf="user.verified">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="vertcent">
+                                <img *ngIf="user.photoURL" [src]="user.photoURL" style="border-radius: 3%;">
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="vertcent">
+                                <h1 class="title" style="font-size: 55px;margin-top: 5%;">Hello, {{ user.displayName | titlecase }}</h1>
+                                <p>UID: {{ user.uid }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="vertcent">
+                                <a  (click)="auth.signOut()" style="cursor: pointer;color: var(--medium);" ><p><i class="fas fa-sign-out"></i> Sign out</p></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+    
+                    <div style="margin-top: 4%;">
+                        <hr>
+                        <div class="row" style="margin-top: 4%" >
+                            <div class="col-sm-12" >
+                                <h5 class="title" style="text-decoration: underline;margin-top: 4%;">Users</h5>
+                                <div style="max-height: 50vh; overflow-y: auto; overflow-x: hidden;">
+                                    <div class="row">
+                                        <div style="margin-top: 2%;" *ngFor="let item of users" class="col-sm-4">
+                                            <div  class="row">
+                                                <div class="col-sm-3" 
+                                                >
+                                                
+                                                <div class=" ">
+                                                    <img [src]="item.photoURL" style="
+                                                
+                                                    max-height: 80%;
+                                                    max-width: 80%;
+                                                    border-radius: 6px;
+                                                    align-items: center; 
+                                                " alt="">
+                                                </div>
+                                                
+    
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <div class="vertcent">
+                                                        <p class="subtitle" style="margin-bottom: 0%;"> {{item.displayName | titlecase}}
+                                                             <br>
+                                                             <small style="font-size: 11px;color: lightgray; ">
+                                                                {{item.email | titlecase}}
+                                                                 
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <span class="badge bg-custom" style="padding: 2%;">{{item.verified ? 'Verified' : 'Pending'}}</span>
+    
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input (change)="verify(item.id,item.verified)" class="form-check-input" type="checkbox" [checked]="item.verified" id="inlineCheckbox1" value="option1" />
+                                                                     </div>
+            
+                                                                </div>
+                                                            </div>
+    
+                                                            
+                                                        </small>
+                                                            <br> <a (click)="auth.deleteUser(item.id)"  style="color: red; text-decoration: underline;font-size: 12px; cursor: pointer;" ><small>Delete</small></a></p>    
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>               
+                        </div>
+                        
+                    </div>
+                </div>                      
+            </div> 
+        </div>   
+          
+
+</ng-template>

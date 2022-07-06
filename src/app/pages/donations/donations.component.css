@@ -1,0 +1,9 @@
+.banner{
+    background: url(./../../../assets/pexels-rodnae-productions-7821738.jpg);
+                    
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    height: 70vh;
+}

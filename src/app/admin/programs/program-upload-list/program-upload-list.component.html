@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-header">List of Files</div>
+    <ul
+      class="list-group list-group-flush"
+      *ngFor="let file of fileUploads"
+      style="max-height: 50vh; overflow-y: auto; "
+    >
+      <li class="list-group-item">
+        <app-program-upload-details [fileUpload]='file'></app-program-upload-details>
+      </li>
+    </ul>
+  </div>

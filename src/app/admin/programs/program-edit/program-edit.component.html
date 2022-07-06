@@ -1,0 +1,150 @@
+<div class="header">
+    <app-side-nav></app-side-nav>
+    <div class="contentblock">
+        <div class="row" style="margin-top: 4%;">
+            <div class="col-sm-6">
+                <h1 class="title" style="float: left;">  Program editor.</h1>
+            </div> 
+            <div  class="col-sm-6">
+
+            </div>
+        </div>
+        <div class="container" style="margin-top: 4%;">
+            <form  [formGroup]="form" (ngSubmit)="submit()" >
+                <div class="row"> 
+                    <div class="col-sm-6">
+                            <div class=" mb-4">
+                                <label class="form-label" for="title"><small>Title</small></label>
+                                <input type="text" id="title" formControlName="title"  class="form-control form-control-sm" />
+                                
+                                <div *ngIf="f['title'].touched && f['title'].invalid" style="color: var(--medium);">
+                                    <div *ngIf="f['title'].errors && f['title'].errors['required']" > <small>** Title is required.</small> </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="title"><small>Location</small></label>
+
+                                <input type="text" id="location" formControlName="location"  class="form-control form-control-sm" />
+                                <div *ngIf="f['location'].touched && f['location'].invalid" style="color: var(--medium);">
+                                    <div *ngIf="f['location'].errors && f['location'].errors['required']" > <small>** Location is required.</small> </div>
+                                    <div *ngIf="f['location'].errors && f['location'].errors['minlength']"><small>** Location be above 3 characters.</small></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="title"><small>Quote</small></label>
+
+                                <input type="text" id="quote" formControlName="quote"  class="form-control form-control-sm" />
+                                <div *ngIf="f['quote'].touched && f['quote'].invalid" style="color: var(--medium);">
+                                    <div *ngIf="f['quote'].errors && f['quote'].errors['required']" > <small>** Quote is required.</small> </div> 
+                                </div>
+                            </div>
+                            <!-- Message input -->
+                            <div class="mb-4">
+                                <label class="form-label" for="title"><small>Description</small></label>
+
+                                <textarea formControlName="description" class="form-control form-control-sm" id="description" rows="12"></textarea>
+                                <div *ngIf="f['description'].touched && f['description'].invalid" style="color: var(--medium);">
+                                <div *ngIf="f['description'].errors && f['description'].errors['required']" > <small>** The description is required.</small> </div>
+                                </div>
+                            </div> 
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-outline mb-4">
+                                    <label for="im1"><small style="color: var(--medium);">Choose image 1 from your uploads photo</small></label>
+                                    <select formControlName="im1" class="form-control" id="im1">
+                                    <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                    <div *ngIf="f['im1'].touched && f['im1'].invalid" style="color: var(--medium);">
+                                        <div *ngIf="f['im1'].errors && f['im1'].errors['required']" > <small>**Image is required.</small> </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im2"><small style="color: var(--medium);">Choose image 2 from your uploads photo</small></label>
+                                    <select formControlName="im2" class="form-control" id="im2">
+                                        <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                        <div *ngIf="f['im2'].touched && f['im2'].invalid" style="color: var(--medium);">
+                                            <div *ngIf="f['im2'].errors && f['im2'].errors['required']" > <small>**Image is required.</small> </div>
+                                        </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im3"><small style="color: var(--medium);">Choose image 3 from your uploads photo</small></label>
+                                    <select formControlName="im3" class="form-control" id="im2">
+                                        <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                        <div *ngIf="f['im3'].touched && f['im3'].invalid" style="color: var(--medium);">
+                                            <div *ngIf="f['im3'].errors && f['im3'].errors['required']" > <small>**Image is required.</small> </div>
+                                        </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im4"><small style="color: var(--medium);">Choose image 4 from your uploads photo</small></label>
+                                    <select formControlName="im4" class="form-control" id="im3">
+                                        <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                        <div *ngIf="f['im4'].touched && f['im4'].invalid" style="color: var(--medium);">
+                                            <div *ngIf="f['im4'].errors && f['im4'].errors['required']" > <small>**Image is required.</small> </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                
+                                <div class="form-outline mb-4">
+                                    <label for="im5"><small style="color: var(--medium);">Choose image 5 from your uploads photo</small></label>
+                                    <select formControlName="im5" class="form-control" id="im5">
+                                    <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                    <div *ngIf="f['im5'].touched && f['im5'].invalid" style="color: var(--medium);">
+                                        <div *ngIf="f['im5'].errors && f['im5'].errors['required']" > <small>**Image is required.</small> </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im6"><small style="color: var(--medium);">Choose image 6 from your uploads photo</small></label>
+                                    <select formControlName="im6" class="form-control" id="im6">
+                                    <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                    <div *ngIf="f['im6'].touched && f['im6'].invalid" style="color: var(--medium);">
+                                        <div *ngIf="f['im6'].errors && f['im6'].errors['required']" > <small>**Image is required.</small> </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im7"><small style="color: var(--medium);">Choose image 7 from your uploads photo</small></label>
+                                    <select formControlName="im7" class="form-control" id="im7">
+                                    <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                    <div *ngIf="f['im7'].touched && f['im7'].invalid" style="color: var(--medium);">
+                                        <div *ngIf="f['im7'].errors && f['im7'].errors['required']" > <small>**Image is required.</small> </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im8"><small style="color: var(--medium);">Choose image 8 from your uploads photo</small></label>
+                                    <select formControlName="im8" class="form-control" id="im8">
+                                    <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                    <div *ngIf="f['im8'].touched && f['im8'].invalid" style="color: var(--medium);">
+                                        <div *ngIf="f['im8'].errors && f['im8'].errors['required']" > <small>**Image is required.</small> </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label for="im9"><small style="color: var(--medium);">Choose image 9 from your uploads photo</small></label>
+                                    <select formControlName="im9" class="form-control" id="im9">
+                                    <option *ngFor="let item of fileUploads"  [value]="item.url" >{{item.name}}</option> 
+                                    </select>
+                                    <div *ngIf="f['im9'].touched && f['im9'].invalid" style="color: var(--medium);">
+                                        <div *ngIf="f['im9'].errors && f['im9'].errors['required']" > <small>**Image is required.</small> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-custom1 shadow-0"  [disabled]="form.invalid" type="submit">Submit</button>
+                &nbsp;
+                <button (click)="auth.deleteProgram(member_id)" class="btn btn-danger shadow-0" >Delete program</button>
+
+            </form>
+        </div>
+    </div>
+</div> 

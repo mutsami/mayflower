@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div style="margin-top: 8%;margin-bottom: 8%;">
+
+    <div *ngIf="programs.length < 1" style="text-align: center;" >
+        <h1 class="subtitle">Recreational activity programs coming soon</h1>
+        <img src="./../../../assets/atomic-list-is-empty-1.png" style="height: 50vh;" alt="" srcset="">   
+    </div>
+</div>
+<div *ngIf="programs.length > 0" > 
+    <div *ngFor="let program of programs">
+    
+        <div  class="row margin-top-max" style="margin-top: 6%;margin-bottom: 6%;">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10" style="text-align: center;">
+                <h1 class="title">{{program.title}} </h1>
+                <h3 class="subtitle margin-top" style="color: var(--sec_medium);">{{program.location}} </h3>
+                <p style="letter-spacing: 1px; margin-top: 4%; ">
+                    {{program.description}} 
+                </p>
+                <h3 style="letter-spacing: 1px; margin-top: 4%; color: var(--sec_medium); ">
+                    "{{program.quote}}"
+                </h3>
+                <a  [routerLink]= "['/donations']"  class="tracking-in-expand" style="margin-top: 4%;"><small><a class="links" style="color: var(--sec_medium);text-decoration: underline;cursor: pointer;" >Support this program</a></small></a>
+            </div> 
+            <div class="col-sm-1"></div>
+        </div>
+    
+        <div class="horizontal-scroll container-fluid"> 
+            <div *ngFor="let item of program.images" class="imgclass">
+                <img class="imgclass" [src]="item.url" *ngIf="item.type !== 'video/mp4'" onerror="this.style.display='none'"/>
+            
+            </div> 
+        </div>
+
+        <div class="horizontal-scroll container-fluid"> 
+            <div *ngFor="let item of program.images" class="imgclass">
+                <video *ngIf="item.type == 'video/mp4'" class="imgclass" [src]="item.url" controls></video>
+            </div> 
+        </div>
+    </div>
+
+</div>
+    
+<hr>
+<app-footer></app-footer>

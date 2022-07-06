@@ -1,0 +1,105 @@
+<div class="header">
+    <app-side-nav></app-side-nav>
+    <div class="contentblock">
+        <div class="row" style="margin-top: 4%;">
+            <div class="col-sm-6">
+                <h1 class="title" style="float: left;">  School editor.</h1>
+            </div> 
+            <div  class="col-sm-6">
+
+            </div>
+        </div>
+        <div class="container" style="margin-top: 4%;">
+            <form  [formGroup]="form" (ngSubmit)="submit()" >
+                <div class="row"> 
+                    <div class="col-sm-6">
+                            <div class=" mb-4">
+                                <label class="form-label" for="title"><small>Title</small></label>
+                                <input type="text" id="title" formControlName="title"  class="form-control form-control-sm" />
+                                
+                                <div *ngIf="f['title'].touched && f['title'].invalid" style="color: var(--medium);">
+                                    <div *ngIf="f['title'].errors && f['title'].errors['required']" > <small>** Title is required.</small> </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="title"><small>Location</small></label>
+
+                                <input type="text" id="location" formControlName="location"  class="form-control form-control-sm" />
+                                <div *ngIf="f['location'].touched && f['location'].invalid" style="color: var(--medium);">
+                                    <div *ngIf="f['location'].errors && f['location'].errors['required']" > <small>** Location is required.</small> </div>
+                                    <div *ngIf="f['location'].errors && f['location'].errors['minlength']"><small>** Location be above 3 characters.</small></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="title"><small>Quote</small></label>
+
+                                <input type="text" id="quote" formControlName="quote"  class="form-control form-control-sm" />
+                                <div *ngIf="f['quote'].touched && f['quote'].invalid" style="color: var(--medium);">
+                                    <div *ngIf="f['quote'].errors && f['quote'].errors['required']" > <small>** Quote is required.</small> </div> 
+                                </div>
+                            </div>
+                            <!-- Message input -->
+                            <div class="mb-4">
+                                <label class="form-label" for="title"><small>Description</small></label>
+
+                                <textarea formControlName="description" class="form-control form-control-sm" id="description" rows="12"></textarea>
+                                <div *ngIf="f['description'].touched && f['description'].invalid" style="color: var(--medium);">
+                                <div *ngIf="f['description'].errors && f['description'].errors['required']" > <small>** The description is required.</small> </div>
+                                </div>
+                            </div> 
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container">
+                            <div> 
+                              <h4 class="title" style="margin-top: 4%;margin-bottom: 4%;"> Picks your image/document uploads</h4>
+                            </div>
+                            <div class="my-3">
+                              <app-school-upload-form></app-school-upload-form>
+                            </div>
+                            <div class="my-2">
+                                <div class="card">
+                                    <div class="card-header">List of Files</div>
+                                    <ul
+                                      class="list-group list-group-flush"
+                                      *ngFor="let fileUpload of fileUploads"
+                                      style="max-height: 50vh; overflow-y: auto; "
+                                    >
+                                      <li class="list-group-item"> 
+                                          <div class="row">
+                                              <div class="col-sm-9">
+                                                <a href="{{ fileUpload.url }}">{{ fileUpload.name }} - <small style="font-size: 10px; color: lightgray!important;">Uploaded {{ fileUpload.uploaded.toDate() | date }}</small> </a>
+                                            
+                                              </div>
+                                              <div class="col-sm-2">
+                                                  
+                                                <div class="form-check form-check-inline">
+                                                    <input (change)="include(fileUpload)" class="form-check-input" [checked]="isContained(fileUpload)" type="checkbox" id="inlineCheckbox1" value="option1" />
+                                                </div>
+                                              </div>
+                                              <div class="col-sm-2">
+                                                <a (click)="deleteFileUpload(fileUpload)"
+                                                style="cursor: pointer; float: right; text-decoration: underline; color: red;">
+                                                <small style="font-size: 10px;">Delete</small>
+                                                </a>
+                                              </div>
+                                            
+
+                                          </div>
+                                        
+                                        
+                                      </li>
+                                    </ul>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-custom1 shadow-0"  [disabled]="form.invalid" type="submit">Submit</button>
+                &nbsp;
+                <button (click)="auth.deleteSchool(member_id)" class="btn btn-danger shadow-0" >Delete school</button>
+
+            </form>
+        </div>
+    </div>
+</div> 

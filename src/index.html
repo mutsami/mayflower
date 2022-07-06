@@ -2,12 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Mayflower</title>
+  <title>Mayflower Children's Foundation</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Font Awesome -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+  />
+  <!-- Font Awesome -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+  />
+  <script src="https://kit.fontawesome.com/f4b4321967.js" crossorigin="anonymous"></script>
+  
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- MDB -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
+  rel="stylesheet"
+  />
+  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 </head>
 <body>
-  <app-root></app-root>
+  <div class="percent">
+    <div class="fill" style="height: 0%; background-color: var(--dark);"></div>
+    <div class="counter">&nbsp; <h1 class="count lead" style="color: var(--dark);">0%</h1></div>
+  </div>
+  <app-root></app-root>  
+
+  <script src="node_modules/particles.js/particles.js"></script>
+  <script>
+    var counter = document.querySelector(".percent");
+
+    TweenLite.set(counter, {
+        xPercent: -5,
+        yPercent: -5,
+    });
+
+    // window.addEventListener("mousemove", moveCounter);
+
+    function moveCounter(e) {
+        TweenLite.to(counter, 0.5, {
+            x: e.clientX,
+            y: e.clientY,
+        });
+    }
+
+    function progress() {
+        var windowScrollTop = $(window).scrollTop();
+        var docHeight = $(document).height();
+        var windowHeight = $(window).height();
+
+     var progress = 0;
+        if (isNaN((windowScrollTop / (docHeight - windowHeight)) * 100)) {
+          progress = 0;
+        }else{
+          progress = (windowScrollTop / (docHeight - windowHeight)) * 100;
+        }
+
+        var $bgColor = progress > 99 ? "var(--medium)" : "var(--medium)";
+        var $textColor = progress > 99 ? "var(--dark)" : "var(--dark)";
+
+        $(".count").text(Math.round(progress) + "%")
+            .css({ color: $textColor });
+
+        $(".fill")
+            .height(progress + "%")
+            .css({ backgroundColor: $bgColor });
+    }
+    progress();
+    $(document).on("scroll", progress);
+</script> 
+
+  
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"
+  ></script>
+  <script src="node_modules/chart.js/src/chart.js"></script>
 </body>
 </html>

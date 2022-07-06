@@ -1,0 +1,5 @@
+<a href="{{ fileUpload.url }}">{{ fileUpload.name }} - <small style="font-size: 10px; color: lightgray!important;">Uploaded {{ fileUpload.uploaded.toDate() | date }}</small> </a>
+<button (click)="deleteFileUpload(fileUpload)"
+  class="btn btn-danger btn-sm" style="float: right">
+  Delete
+</button>

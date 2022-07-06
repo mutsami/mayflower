@@ -1,0 +1,96 @@
+<div class="container">
+    <nav style="padding-top: 5%;" class="navbar navbar-expand-lg navbar-inverse navbar-light transparent shadow-0">
+        <!-- Container wrapper -->
+        <div  class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2 bounce-top" [routerLink]= "['/']">
+              <img src="./../../../assets/new_logo.jpg" style="height:100px;margin-right: 4%;" alt="">
+
+                <p class="subTitle nav-item" style="font-weight: lighter;letter-spacing: 2px;margin-bottom: 0%;">Mayflower Children's <br> <span class="title" style="letter-spacing: 0px;color: var(--medium)!important;">Foundation </span>  
+                </p>
+                
+            </a>
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarRightAlignExample"
+            aria-controls="navbarRightAlignExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+            
+            <!-- Left links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]= "['/']" >Home</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Programs
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" [routerLink]= "['/schools']">Schools</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink]= "['/recreation']">Recreation</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink]= "['/visits']">Visits</a>
+                </li>
+              </ul>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link"  [routerLink]= "['/partnership']">Partner opportunities</a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link"  [routerLink]= "['/team']">Team & Volunteers</a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link"  [routerLink]= "['/contact']">Contact</a>
+              </li> 
+
+              <li class="nav-item">
+                <a class="nav-link" >
+                  <img src="./../../../assets/Flag_of_the_United_Kingdom.svg" style="height: 15px;" alt="">
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" >
+                  <img src="./../../../assets/Flag_of_Kenya.svg" style="height: 15px;" alt="">
+                </a>
+              </li> 
+              &nbsp;              
+              <li class="nav-item">
+                <a class="btn btn-custom shadow-0"  [routerLink]= "['/donations']">Donate</a>
+              </li>
+                
+              
+              <!-- <li class="nav-item">
+                <a class="nav-link" href='#search'>Search</a>
+              </li>   -->
+            </ul>
+            <!-- Left links -->
+          </div>
+          
+          <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav> 
+</div>

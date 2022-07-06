@@ -1,0 +1,39 @@
+
+<div class="container-fluid" style="background-color: var(--light);" >
+    <app-navbar></app-navbar>
+    <div class="container" style="padding-top: 4%;padding-bottom: 8%;">
+        <h1 class="subtitle margin-top">Get in touch</h1>
+        <h2 class="title">Schedule an Appointment</h2>
+        <form  [formGroup]="form" (ngSubmit)="submit()">
+            <h3 class="margin-top" style="margin-top: 4%; line-height: 2;">Hey, my name is 
+            
+                <input formControlName="name" type="text" id="form4Example1" class="custom-input" placeholder="type here" />
+        
+                and I'm interested in 
+                <input formControlName="message"  type="text" id="form4Example1" class="custom-input" placeholder="area of interest" />. 
+                Get in touch with me at 
+                <input formControlName="email"  type="email" id="typeEmail"  class="custom-input" placeholder="Your email ID here" />
+                
+                
+                <div *ngIf="f['name'].touched && f['name'].invalid" style="color: var(--medium);">
+                    <div *ngIf="f['name'].errors && f['name'].errors['required']" > <small style="font-size: 16px;">** Name is required.</small> </div> 
+                </div>
+
+                <div *ngIf="f['message'].touched && f['message'].invalid" style="color: var(--medium);">
+                    <div *ngIf="f['message'].errors && f['message'].errors['required']" > <small style="font-size: 16px;">** Ypur message is required.</small> </div> 
+                </div>
+
+                <div *ngIf="f['email'].touched && f['email'].invalid" style="color: var(--medium);">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']" > <small style="font-size: 16px;">** Email is required.</small> </div>
+                    <div *ngIf="f['email'].errors && f['email'].errors['email']" > <small style="font-size: 16px;">** Make sure the Email is in the correct format.</small> </div>
+                </div>
+
+                <button class="btn btn-custom shadow-0 margin-top"  [disabled]="form.invalid" type="submit">Submit message</button>
+        
+            </h3>
+        </form>
+    </div>
+
+</div>
+<hr>
+<app-footer></app-footer>

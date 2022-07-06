@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding-top: 5%;">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="subtitle margin-top">The team</h1>
+            <h2 class="title " style="margin-top: 2%;">Meet our team of experts <br> and warm-hearted individuals</h2>
+            <!-- <small class="text-muted" style="letter-spacing: 1px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit itaque dignissimos, labore voluptatum voluptatibus provident eius ab repudiandae cupiditate totam voluptatem </small> -->
+        </div>
+        <div class="col-sm-4">
+            <div class="vertcent">
+                <a class="btn btn-custom shadow-0 margin-top" (click)="scroll(target)">View volunteer opportunities</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row margin-top" style="margin-top: 2%;">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9"> 
+            <div class="row" style="margin-top:8%;margin-bottom:8%;">
+                <div *ngFor="let member of team" class="col-sm-4">
+                    <a style="color: var(--dark);">
+                        <img [src]="member.photoURL" style="display: block;
+                        object-fit: cover; 
+                        width: 100%;
+                        height: 50vh;" />
+                        
+                        <h2 class="subtitle" style="margin-top: 4%;font-weight: bold;">{{member.name}}</h2>
+                        <p style="font-size: 12px;letter-spacing: 1px;color: var(--medium);">{{member.title}}</p>
+                    </a>
+                </div> 
+            </div> 
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+<div  #target  class="container-fluid" style="background-color: var(--light);padding: 8%;">
+    <div style="text-align: center;">
+        <h1 class="title margin-top" >Open opportunities</h1>
+        <p style="letter-spacing: 1px;margin-top: 2%;">We are an 100% community-led <br> organization interested in social development</p>
+        
+        <div style="margin-top: 6%;">
+            <div *ngIf="!careers" >
+                <h1 class="subtitle">No openings yet</h1>
+                <img src="./../../../assets/atomic-list-is-empty-1.png" style="height: 50vh;" alt="" srcset="">   
+            </div>
+            <div *ngIf="careers" class="row margin-top" style="max-height: 80vh;  overflow-y: auto;margin-top: 5%;"> 
+                <a class="margin-top"  *ngFor="let member of careers" class="col-sm-12" style=" border-radius: 4px; color: var(--dark);margin-top: 1%; padding: 2%; border: 1px solid var(--dark); ">
+                     <div class="row" >
+                         <div class="col-sm-5">
+                            <h2 class="subtitle" style="font-weight: bold;margin-bottom: 0;margin-bottom: 0;">{{member.title}}</h2>
+                            <p class="subtitle" style="margin-bottom: 0%;"><span style="font-size: 12px;color: var(--medium);margin-bottom: 0;">{{getDept(member.department)}} department</span></p>
+                         </div>
+                         <div class="col-sm-3">
+                             <p style="margin-bottom: 0%;">{{member.uploaded.toDate()  | date  }}</p>
+                             <p style="margin-bottom: 0%;"><small style="font-size: 11px;color: var(--dark);">{{member.uploaded.toDate()  | timeago  }}</small></p>
+                        </div>
+    
+                         <div class="col-sm-3">
+                            <span class="badge bg-custom">{{member.nature == '1' ? 'Full-time' : 'part-time'}}</span>
+                            &nbsp;
+                            <span class="badge bg-custom"> {{member.location}} </span>
+                         </div>
+                         <div class="col-sm-1" style="text-align:left">
+                          </div>
+                     </div>    
+                </a> 
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

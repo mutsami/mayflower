@@ -1,0 +1,25 @@
+<div class="side-nav" >
+    <!-- Navbar brand -->
+    <img class=" bounce-top" src="./../../../assets/logo.jpeg" style="height: 45px;margin-left: 4%;" alt="">
+    <a class="navbar-brand me-2 bounce-top" [routerLink]= "['/']">
+        <p class="subTitle nav-item" style="font-size: 14px; font-weight: lighter;letter-spacing: 2px;margin-bottom: 0%;">Mayflower Children's <br> <span class="title" style="letter-spacing: 0px;color: var(--medium)!important;">Foundation </span>  
+        </p> 
+    </a>
+    
+    <a class="logo-mini navbar-brand me-2 bounce-top" [routerLink]= "['/']">
+        <h1 class="title nav-item" style="font-weight: lighter;letter-spacing: 2px;margin-bottom: 0%;">MF</h1>
+    </a>
+    <p class="title"></p>
+    <ul class="nav-links">
+        <li><a [routerLink]="['/admin']"><i class="fa-solid fa-house-chimney-window"></i><p>Dashboard</p></a></li>
+        <li><a [routerLink]="['/admin/message']"><i class="fa-solid fa-message"></i><p>Messages</p></a></li>
+        <li><a [routerLink]="['/admin/schools']"><i class="fas fa-graduation-cap"></i><p>Schools</p></a></li>
+        <li><a [routerLink]="['/admin/recreation']"><i class="fas fa-gamepad"></i><p>Recreation</p></a></li>
+        <li><a [routerLink]="['/admin/visits']"><i class="fas fa-car"></i><p>Visits</p></a></li>
+        <li><a [routerLink]="['/admin/partnerships']"><i class="fa-solid fa-handshake"></i><p>Partnerships</p></a></li>
+        <li><a [routerLink]="['/admin/careers']"><i class="fas fa-suitcase"></i><p>Careers</p></a></li>
+        <li><a [routerLink]="['/admin/team']"><i class="fa-solid fa-users"></i><p>Team</p></a></li>
+        <!-- <li><a [routerLink]="['/admin/blog']"><i class="fa-solid fa-blog"></i><p>Blog</p></a></li>  -->
+        <li><a  (click)="auth.signOut()" style="cursor: pointer;" ><i class="fas fa-sign-out"></i><p>Sign out</p></a></li>
+    </ul> 
+</div>
